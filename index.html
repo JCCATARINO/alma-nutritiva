@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alma Nutritiva – Nutrição & Performance</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --forest: #1e3a2f;
+      --sage: #4a7c5f;
+      --gold: #c9a84c;
+      --charcoal: #1a1a1a;
+      --light-sage: #e8f0eb;
+      --warm-white: #fdfaf5;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      background: rgba(253, 250, 245, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(30,58,47,0.1);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--forest) !important;
+      letter-spacing: -0.5px;
+    }
+    .navbar-brand span { color: var(--gold); }
+    .nav-link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal) !important;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem !important;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--sage) !important; }
+    .cart-btn {
+      background: var(--forest);
+      color: #fff !important;
+      border-radius: 50px;
+      padding: 0.45rem 1.2rem !important;
+      font-size: 0.85rem;
+    }
+    .cart-btn:hover { background: var(--sage); color: #fff !important; }
+    .cart-badge {
+      background: var(--gold);
+      color: var(--forest);
+      font-size: 0.7rem;
+      font-weight: 700;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 4px;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      background: var(--forest);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .hero-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(6rem, 18vw, 20rem);
+      font-weight: 700;
+      color: rgba(255,255,255,0.04);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.18;
+    }
+    .hero-orb-1 {
+      width: 600px; height: 600px;
+      background: var(--gold);
+      top: -100px; right: -100px;
+    }
+    .hero-orb-2 {
+      width: 400px; height: 400px;
+      background: var(--sage);
+      bottom: -50px; left: -50px;
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(201,168,76,0.2);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title strong {
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+    }
+    .hero-subtitle {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.05rem;
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .btn-primary-custom {
+      background: var(--gold);
+      color: var(--forest);
+      border: none;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary-custom:hover {
+      background: #e0be69;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(201,168,76,0.35);
+      color: var(--forest);
+    }
+    .btn-outline-custom {
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .btn-outline-custom:hover {
+      border-color: #fff;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .hero-stat-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .hero-stat-lbl {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ─── SECTION HEADERS ─── */
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      color: var(--forest);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .section-title strong { font-weight: 700; }
+    .divider-gold {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1.2rem 0 1.5rem;
+    }
+
+    /* ─── NUTRITION ─── */
+    #nutricao { background: var(--warm-white); padding: 7rem 0; }
+    .nutrition-card {
+      background: #fff;
+      border: 1px solid rgba(30,58,47,0.08);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      height: 100%;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .nutrition-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sage), var(--gold));
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    .nutrition-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(30,58,47,0.1); }
+    .nutrition-card:hover::before { transform: scaleX(1); }
+    .nutrition-icon {
+      width: 56px; height: 56px;
+      background: var(--light-sage);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+      color: var(--sage);
+    }
+    .nutrition-card h4 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 0.8rem;
+    }
+    .nutrition-card p {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* ─── PROTEIN ─── */
+    #proteina {
+      background: var(--forest);
+      padding: 7rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #proteina::before {
+      content: 'PROTEÍNA';
+      position: absolute;
+      bottom: -2rem;
+      right: -1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(5rem, 15vw, 14rem);
+      font-weight: 700;
+      color: rgba(255,255,255,0.03);
+      pointer-events: none;
+    }
+    .protein-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .protein-feature-icon {
+      width: 44px; height: 44px;
+      background: rgba(201,168,76,0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .protein-feature h5 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .protein-feature p { font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+    .protein-visual {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .macro-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.4rem;
+    }
+    .macro-bar { height: 8px; background: rgba(255,255,255,0.1); border-radius: 99px; margin-bottom: 1.2rem; overflow: hidden; }
+    .macro-fill { height: 100%; border-radius: 99px; transition: width 1.5s ease; }
+    .fill-gold { background: linear-gradient(90deg, var(--gold), #e8d08a); }
+    .fill-sage { background: linear-gradient(90deg, var(--sage), #7ab894); }
+    .fill-blue { background: linear-gradient(90deg, #4a7aba, #7aaae8); }
+
+    /* ─── PRODUCTS ─── */
+    #produtos { background: var(--cream); padding: 7rem 0; }
+    .product-card {
+      background: #fff;
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.3s;
+      border: 1px solid rgba(30,58,47,0.06);
+    }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(30,58,47,0.12); }
+    .product-img {
+      background: var(--light-sage);
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-img-inner {
+      font-size: 5rem;
+      transition: transform 0.4s;
+    }
+    .product-card:hover .product-img-inner { transform: scale(1.1) rotate(-5deg); }
+    .product-badge {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: var(--gold);
+      color: var(--forest);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 50px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .product-body { padding: 1.5rem; }
+    .product-category {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .product-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 0.5rem;
+    }
+    .product-desc { font-size: 0.85rem; color: #777; margin-bottom: 1rem; line-height: 1.6; }
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--forest);
+    }
+    .product-price small { font-size: 0.9rem; color: #999; font-family: 'DM Sans'; font-weight: 400; }
+    .btn-add-cart {
+      background: var(--forest);
+      color: #fff;
+      border: none;
+      padding: 0.65rem 1.4rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-add-cart:hover { background: var(--sage); transform: translateY(-1px); }
+    .btn-add-cart:active { transform: scale(0.96); }
+
+    /* ─── ABOUT ─── */
+    #sobre { background: var(--warm-white); padding: 7rem 0; }
+    .about-img-block {
+      background: var(--light-sage);
+      border-radius: 24px;
+      height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-img-block::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(30,58,47,0.15), transparent);
+      border-radius: 0 0 24px 24px;
+    }
+    .about-value {
+      border-left: 2px solid var(--gold);
+      padding-left: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .about-value h5 { font-size: 1rem; color: var(--forest); font-weight: 600; margin-bottom: 0.2rem; }
+    .about-value p { font-size: 0.875rem; color: #666; }
+
+    /* ─── TESTIMONIALS ─── */
+    #testemunhos { background: var(--forest); padding: 7rem 0; }
+    .testimonial-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      height: 100%;
+    }
+    .testimonial-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; }
+    .testimonial-text { color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar {
+      width: 44px; height: 44px;
+      background: var(--sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #fff;
+      font-weight: 700;
+    }
+    .testimonial-name { font-size: 0.9rem; color: #fff; font-weight: 600; }
+    .testimonial-role { font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+
+    /* ─── CONTACT ─── */
+    #contacto { background: var(--cream); padding: 7rem 0; }
+    .contact-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border: 1px solid rgba(30,58,47,0.08);
+      transition: all 0.3s;
+    }
+    .contact-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(30,58,47,0.08); }
+    .contact-icon {
+      width: 60px; height: 60px;
+      background: var(--light-sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--sage);
+      margin: 0 auto 1rem;
+    }
+    .contact-card h5 { font-size: 1.1rem; color: var(--forest); font-weight: 600; margin-bottom: 0.4rem; }
+    .contact-card p { font-size: 0.875rem; color: #777; }
+    .contact-form .form-control {
+      border: 1.5px solid rgba(30,58,47,0.12);
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .contact-form .form-control:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(74,124,95,0.1);
+    }
+    .contact-form label { font-size: 0.85rem; font-weight: 500; color: var(--forest); margin-bottom: 0.4rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.6);
+      padding: 4rem 0 2rem;
+    }
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .footer-brand span { color: var(--gold); }
+    .footer-desc { font-size: 0.875rem; line-height: 1.7; max-width: 280px; margin-top: 0.8rem; }
+    .footer-heading { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); font-weight: 600; margin-bottom: 1rem; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 0.5rem; }
+    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-divider { border-color: rgba(255,255,255,0.08); margin: 2rem 0; }
+    .social-link {
+      width: 38px; height: 38px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ─── CART SIDEBAR ─── */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .cart-overlay.active { opacity: 1; pointer-events: all; }
+    .cart-sidebar {
+      position: fixed;
+      top: 0; right: 0;
+      width: 380px;
+      height: 100vh;
+      background: #fff;
+      z-index: 10000;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-sidebar.active { transform: translateX(0); }
+    .cart-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-header h5 { font-size: 1.1rem; color: var(--forest); font-weight: 600; margin: 0; }
+    .cart-close { background: none; border: none; font-size: 1.3rem; color: #888; cursor: pointer; }
+    .cart-items { flex: 1; overflow-y: auto; padding: 1.5rem; }
+    .cart-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #aaa;
+    }
+    .cart-empty i { font-size: 3rem; margin-bottom: 1rem; display: block; }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .cart-item-img {
+      width: 56px; height: 56px;
+      background: var(--light-sage);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+    .cart-item-name { font-size: 0.875rem; font-weight: 600; color: var(--forest); }
+    .cart-item-price { font-size: 0.85rem; color: var(--sage); font-weight: 500; }
+    .cart-item-qty { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+    .qty-btn { width: 24px; height: 24px; border: 1px solid #ddd; border-radius: 50%; background: none; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .qty-btn:hover { background: var(--light-sage); border-color: var(--sage); }
+    .cart-remove { margin-left: auto; color: #ccc; background: none; border: none; font-size: 1rem; cursor: pointer; }
+    .cart-remove:hover { color: #e55; }
+    .cart-footer { padding: 1.5rem; border-top: 1px solid #eee; }
+    .cart-total { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .cart-total span { font-size: 0.875rem; color: #666; }
+    .cart-total strong { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--forest); }
+    .btn-checkout {
+      width: 100%;
+      background: var(--forest);
+      color: #fff;
+      border: none;
+      padding: 1rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-checkout:hover { background: var(--sage); }
+
+    /* ─── MODAL ─── */
+    .modal-soon .modal-content {
+      border-radius: 24px;
+      border: none;
+      text-align: center;
+      padding: 1rem;
+    }
+    .modal-soon-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .modal-soon .modal-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--forest); }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s, transform 0.7s;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .cart-sidebar { width: 100vw; }
+      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">Alma<span>-</span>Nutritiva</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="#nutricao">Nutrição</a></li>
+        <li class="nav-item"><a class="nav-link" href="#proteina">Proteína</a></li>
+        <li class="nav-item"><a class="nav-link" href="#produtos">Produtos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        <li class="nav-item ms-lg-2">
+          <button class="nav-link cart-btn" onclick="toggleCart()">
+            <i class="bi bi-bag"></i> Carrinho
+            <span class="cart-badge" id="cartCount">0</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-bg-text">HEALTH</div>
+  <div class="container">
+    <div class="row align-items-center min-vh-100 py-5">
+      <div class="col-lg-7 hero-content">
+        <div class="hero-tag">✦ Nutrição de Excelência</div>
+        <h1 class="hero-title">
+          Transforma o teu <strong>corpo e mente</strong>
+        </h1>
+        <p class="hero-subtitle">
+          Suplementos premium formulados por especialistas em nutrição desportiva. Ciência aplicada ao teu desempenho máximo.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#produtos" class="btn-primary-custom">Ver Produtos <i class="bi bi-arrow-right"></i></a>
+          <a href="#sobre" class="btn-outline-custom">Saber Mais</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-val">12k+</div>
+            <div class="hero-stat-lbl">Clientes Ativos</div>
+          </div>
+          <div>
+            <div class="hero-stat-val">98%</div>
+            <div class="hero-stat-lbl">Satisfação</div>
+          </div>
+          <div>
+            <div class="hero-stat-val">35+</div>
+            <div class="hero-stat-lbl">Produtos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUTRIÇÃO -->
+<section id="nutricao" class="py-5">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-6 fade-up">
+        <span class="section-tag">🌿 Nutrição</span>
+        <h2 class="section-title">Uma alimentação que <strong>cuida de ti</strong></h2>
+        <div class="divider-gold"></div>
+        <p class="text-muted" style="font-size:1rem; line-height:1.8;">
+          A nutrição adequada é o pilar de qualquer jornada de saúde. Combinamos ciência e natureza para te oferecer soluções completas e equilibradas.
+        </p>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="nutrition-card">
+          <div class="nutrition-icon">🥦</div>
+          <h4>Macronutrientes</h4>
+          <p>Proteínas, hidratos de carbono e gorduras — o trio essencial para energia, recuperação e performance diária sustentada.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="nutrition-card">
+          <div class="nutrition-icon">💊</div>
+          <h4>Micronutrientes</h4>
+          <p>Vitaminas e minerais que fortalecem o sistema imunitário, favorecem o metabolismo e melhoram a saúde celular.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="nutrition-card">
+          <div class="nutrition-icon">💧</div>
+          <h4>Hidratação</h4>
+          <p>A água e os electrólitos são fundamentais para a função muscular, cognitiva e para um rendimento físico ótimo.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="nutrition-card">
+          <div class="nutrition-icon">⚖️</div>
+          <h4>Equilíbrio Calórico</h4>
+          <p>Compreender o balanço energético é o primeiro passo para alcançar os teus objetivos — seja perder, manter ou ganhar.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="nutrition-card">
+          <div class="nutrition-icon">🫀</div>
+          <h4>Saúde Cardiovascular</h4>
+          <p>Ómega-3, CoQ10 e antioxidantes que protegem o coração e melhoram a circulação sanguínea de forma natural.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="nutrition-card">
+          <div class="nutrition-icon">🧠</div>
+          <h4>Performance Mental</h4>
+          <p>Nutrientes neuroprotetores como colina, magnésio e vitaminas do complexo B que mantêm o foco e reduzem a fadiga.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="nutrition-card">
+          <div class="nutrition-icon">🏋️</div>
+          <h4>Recuperação Muscular</h4>
+          <p>BCAA, glutamina e creatina otimizados para reduzir DOMS, acelerar a síntese proteica e maximizar adaptações ao treino.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROTEÍNA -->
+<section id="proteina">
+  <div class="container">
+    <div class="row align-items-center g-5 py-2">
+      <div class="col-lg-6 fade-up">
+        <span class="section-tag" style="color: var(--gold);">💪 Proteína</span>
+        <h2 class="section-title" style="color:#fff;">O combustível <strong style="color:var(--gold);">essencial</strong> do músculo</h2>
+        <div class="divider-gold"></div>
+        <p style="color:rgba(255,255,255,0.6); font-size:0.95rem; line-height:1.8; margin-bottom:2rem;">
+          A proteína é o principal macronutriente para o crescimento, reparação e manutenção muscular. Com uma ingestão adequada, maximizas os resultados do treino e aceleras a recuperação.
+        </p>
+        <div class="protein-feature">
+          <div class="protein-feature-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+          <div>
+            <h5>Síntese Proteica Aumentada</h5>
+            <p>A ingestão pós-treino de 20–40g de proteína de alta qualidade estimula ao máximo a síntese de proteína muscular.</p>
+          </div>
+        </div>
+        <div class="protein-feature">
+          <div class="protein-feature-icon"><i class="bi bi-shield-check"></i></div>
+          <div>
+            <h5>Prevenção de Catabolismo</h5>
+            <p>Proteína suficiente protege a massa muscular durante déficit calórico, garantindo perda de gordura sem perda de músculo.</p>
+          </div>
+        </div>
+        <div class="protein-feature">
+          <div class="protein-feature-icon"><i class="bi bi-graph-up-arrow"></i></div>
+          <div>
+            <h5>Saciedade e Composição</h5>
+            <p>Dietas ricas em proteína aumentam a saciedade, reduzem o apetite e favorecem uma melhor composição corporal.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 fade-up">
+        <div class="protein-visual">
+          <h5 style="color:#fff; font-family:'Cormorant Garamond'; font-size:1.5rem; margin-bottom:0.3rem;">Perfil Nutricional</h5>
+          <p style="color:rgba(255,255,255,0.45); font-size:0.8rem; margin-bottom:2rem;">Por dose (35g) – Whey Isolate Premium</p>
+          <div class="macro-bar-label"><span>Proteína</span><span style="color:var(--gold); font-weight:600;">27g — 77%</span></div>
+          <div class="macro-bar"><div class="macro-fill fill-gold" style="width:77%"></div></div>
+          <div class="macro-bar-label"><span>Hidratos de Carbono</span><span style="color:#7ab894; font-weight:600;">3.5g — 10%</span></div>
+          <div class="macro-bar"><div class="macro-fill fill-sage" style="width:10%"></div></div>
+          <div class="macro-bar-label"><span>Gordura</span><span style="color:#7aaae8; font-weight:600;">1.5g — 4%</span></div>
+          <div class="macro-bar"><div class="macro-fill fill-blue" style="width:4%"></div></div>
+          <div class="row g-3 mt-2">
+            <div class="col-4">
+              <div style="background:rgba(255,255,255,0.06); border-radius:12px; padding:1rem; text-align:center;">
+                <div style="font-family:'Cormorant Garamond'; font-size:1.6rem; color:var(--gold); font-weight:700;">130</div>
+                <div style="font-size:0.72rem; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:0.06em;">Kcal</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div style="background:rgba(255,255,255,0.06); border-radius:12px; padding:1rem; text-align:center;">
+                <div style="font-family:'Cormorant Garamond'; font-size:1.6rem; color:var(--sage); font-weight:700;">9</div>
+                <div style="font-size:0.72rem; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:0.06em;">Aminoácidos Ess.</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div style="background:rgba(255,255,255,0.06); border-radius:12px; padding:1rem; text-align:center;">
+                <div style="font-family:'Cormorant Garamond'; font-size:1.6rem; color:#7aaae8; font-weight:700;">95%</div>
+                <div style="font-size:0.72rem; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:0.06em;">Pureza</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section id="produtos">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-6 fade-up">
+        <span class="section-tag">🛒 Produtos</span>
+        <h2 class="section-title">Os nossos <strong>suplementos</strong></h2>
+        <div class="divider-gold"></div>
+        <p class="text-muted">Formulados com os melhores ingredientes, testados e aprovados por atletas e nutricionistas.</p>
+      </div>
+    </div>
+    <div class="row g-4">
+      <!-- Product 1 -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="product-card">
+          <div class="product-img">
+            <span class="product-img-inner">🥛</span>
+            <span class="product-badge">Mais Vendido</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category">Proteína</div>
+            <div class="product-name">Whey Isolate Premium</div>
+            <div class="product-desc">27g de proteína por dose. Fórmula de rápida absorção com aminoácidos essenciais e BCAA 2:1:1.</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <div class="product-price">€39.90 <small>/ 1kg</small></div>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('Whey Isolate Premium', 39.90, '🥛')">
+                <i class="bi bi-bag-plus"></i> Adicionar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="product-card">
+          <div class="product-img" style="background:#e8eef5;">
+            <span class="product-img-inner">💪</span>
+            <span class="product-badge" style="background:var(--sage); color:#fff;">Novo</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category">Creatina</div>
+            <div class="product-name">Creatine Monohydrate</div>
+            <div class="product-desc">Creatina monoidratada micronizada. Aumenta força, potência e volume muscular. 300g / 60 doses.</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <div class="product-price">€18.90 <small>/ 300g</small></div>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('Creatine Monohydrate', 18.90, '💪')">
+                <i class="bi bi-bag-plus"></i> Adicionar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="product-card">
+          <div class="product-img" style="background:#f5ede8;">
+            <span class="product-img-inner">⚡</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category">Pré-Treino</div>
+            <div class="product-name">Pre-Workout Ignite</div>
+            <div class="product-desc">Energia explosiva com cafeína, beta-alanina, L-citrulina e niacina. Foco e pump sem crash.</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <div class="product-price">€29.90 <small>/ 300g</small></div>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('Pre-Workout Ignite', 29.90, '⚡')">
+                <i class="bi bi-bag-plus"></i> Adicionar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 4 -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="product-card">
+          <div class="product-img" style="background:#f0ebe8;">
+            <span class="product-img-inner">🌿</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category">Vegan</div>
+            <div class="product-name">Plant Protein Blend</div>
+            <div class="product-desc">Blend de proteína vegetal de ervilha, arroz e cânhamo. 24g de proteína. 100% plant-based.</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <div class="product-price">€34.90 <small>/ 800g</small></div>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('Plant Protein Blend', 34.90, '🌿')">
+                <i class="bi bi-bag-plus"></i> Adicionar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 5 -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="product-card">
+          <div class="product-img" style="background:#e8f0f5;">
+            <span class="product-img-inner">🫐</span>
+            <span class="product-badge" style="background: #4a7aba; color:#fff;">Promoção</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category">Vitaminas</div>
+            <div class="product-name">Multivitamínico Sport</div>
+            <div class="product-desc">25 vitaminas e minerais essenciais, adaptados para atletas. Imunidade, energia e recuperação.</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <div class="product-price">€22.90 <small>/ 60 caps</small></div>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('Multivitamínico Sport', 22.90, '🫐')">
+                <i class="bi bi-bag-plus"></i> Adicionar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 6 -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="product-card">
+          <div class="product-img" style="background:#eef0e8;">
+            <span class="product-img-inner">😴</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category">Recuperação</div>
+            <div class="product-name">Sleep & Recovery</div>
+            <div class="product-desc">Magnésio, L-teanina, ashwagandha e melatonina para recuperação noturna profunda e sono de qualidade.</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <div class="product-price">€26.90 <small>/ 60 caps</small></div>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('Sleep & Recovery', 26.90, '😴')">
+                <i class="bi bi-bag-plus"></i> Adicionar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5 fade-up">
+        <div class="about-img-block">🌿</div>
+      </div>
+      <div class="col-lg-7 fade-up">
+        <span class="section-tag">🏢 Sobre Nós</span>
+        <h2 class="section-title">A ciência por trás da <strong>tua saúde</strong></h2>
+        <div class="divider-gold"></div>
+        <p class="text-muted mb-4" style="font-size:1rem; line-height:1.8;">
+          A <strong>Alma Nutritiva</strong> nasceu em 2026 da paixão de Ivan Varges pela nutrição e desempenho atlético. Inconformado com os suplementos genéricos no mercado, uniu-se a uma equipa de nutricionistas e investigadores para criar algo diferente: produtos com formulações científicas rigorosas, ingredientes de origem controlada e total transparência nutricional.
+        </p>
+        <p class="text-muted mb-4" style="font-size:0.95rem; line-height:1.8;">
+          Sediados em Lisboa, trabalhamos com laboratórios certificados na Europa e testamos cada lote por entidades independentes. O nosso compromisso é simples: oferecer apenas o que realmente funciona.
+        </p>
+        <div class="row g-3 mb-4">
+          <div class="col-sm-6">
+            <div class="about-value">
+              <h5>Transparência Total</h5>
+              <p>Cada ingrediente documentado, sem proprietary blends escondidos.</p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-value">
+              <h5>Ciência Aplicada</h5>
+              <p>Fórmulas desenvolvidas com base em estudos científicos revistos por pares.</p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-value">
+              <h5>Qualidade Certificada</h5>
+              <p>Produção em instalações GMP certificadas pela ISO 22000.</p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-value">
+              <h5>Sem Compromissos</h5>
+              <p>Sem adoçantes artificiais, sem corantes, sem ingredientes desnecessários.</p>
+            </div>
+          </div>
+        </div>
+        <a href="#contacto" class="btn-primary-custom" style="text-decoration:none;">Fala Connosco <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTEMUNHOS -->
+<section id="testemunhos">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <span class="section-tag" style="color:var(--gold);">⭐ Testemunhos</span>
+      <h2 class="section-title" style="color:#fff;">O que dizem os nossos <strong style="color:var(--gold);">clientes</strong></h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"O Whey Isolate Premium é o melhor que já experimentei. Dissolve-se perfeitamente, tem um sabor incrível e os resultados são notáveis. Recomendo sem hesitar!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">R</div>
+            <div>
+              <div class="testimonial-name">Keidjane Catarino</div>
+              <div class="testimonial-role">Atleta Amador · Lisboa</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Comecei com o Multivitamínico Sport há 3 meses. Sinto-me com muito mais energia nos treinos e a recuperação melhorou bastante. Qualidade a sério!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">S</div>
+            <div>
+              <div class="testimonial-name">Jeoliver Herodião</div>
+              <div class="testimonial-role">Atleta · Sintra</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Como vegano, o Plant Protein Blend é uma bênção. Proteína completa, saborosa e que realmente ajuda na recuperação. Alma Nutritiva percebe mesmo do assunto."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">T</div>
+            <div>
+              <div class="testimonial-name">Tomás Ferreira</div>
+              <div class="testimonial-role">Runner · Braga</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <span class="section-tag">📬 Contacto</span>
+      <h2 class="section-title">Fala <strong>connosco</strong></h2>
+      <div class="divider-gold mx-auto"></div>
+      <p class="text-muted mx-auto" style="max-width:500px;">Estamos aqui para responder a todas as tuas questões sobre nutrição, produtos ou encomendas.</p>
+    </div>
+    <div class="row g-4 mb-5">
+      <div class="col-md-4 fade-up">
+        <div class="contact-card">
+          <div class="contact-icon"><i class="bi bi-geo-alt"></i></div>
+          <h5>Morada</h5>
+          <p>Rua da Saúde, 142<br>1150-300 Lisboa, Portugal</p>
+        </div>
+      </div>
+      <div class="col-md-4 fade-up">
+        <div class="contact-card">
+          <div class="contact-icon"><i class="bi bi-envelope"></i></div>
+          <h5>Email</h5>
+          <p>geral@almanutritiva.pt<br>suporte@almanutritiva.pt</p>
+        </div>
+      </div>
+      <div class="col-md-4 fade-up">
+        <div class="contact-card">
+          <div class="contact-icon"><i class="bi bi-telephone"></i></div>
+          <h5>Telefone</h5>
+          <p>+351 21 000 1234<br>Seg–Sex: 9h–18h</p>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center fade-up">
+      <div class="col-lg-8">
+        <div style="background:#fff; border-radius:24px; padding:3rem; border:1px solid rgba(30,58,47,0.08);">
+          <h4 style="font-size:1.8rem; color:var(--forest); margin-bottom:0.3rem;">Envia-nos uma mensagem</h4>
+          <p class="text-muted mb-4" style="font-size:0.875rem;">Responderemos em menos de 24 horas nos dias úteis.</p>
+          <div class="contact-form row g-3">
+            <div class="col-md-6">
+              <label>Nome Completo</label>
+              <input type="text" class="form-control" placeholder="O teu nome"/>
+            </div>
+            <div class="col-md-6">
+              <label>Email</label>
+              <input type="email" class="form-control" placeholder="email@exemplo.com"/>
+            </div>
+            <div class="col-12">
+              <label>Assunto</label>
+              <input type="text" class="form-control" placeholder="Em que podemos ajudar?"/>
+            </div>
+            <div class="col-12">
+              <label>Mensagem</label>
+              <textarea class="form-control" rows="5" placeholder="Descreve a tua questão..."></textarea>
+            </div>
+            <div class="col-12">
+              <button class="btn-primary-custom" onclick="showContactSuccess(event)">
+                Enviar Mensagem <i class="bi bi-send"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="footer-brand">Alma<span>-</span>Nutritiva</div>
+        <p class="footer-desc">Nutrição de excelência para quem leva a saúde a sério. Ciência, natureza e performance num só lugar.</p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-link"><i class="bi bi-tiktok"></i></a>
+          <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-heading">Empresa</div>
+        <ul class="footer-links">
+          <li><a href="#sobre">Sobre Nós</a></li>
+          <li><a href="#">Equipa</a></li>
+          <li><a href="#">Certificações</a></li>
+          <li><a href="#">Sustentabilidade</a></li>
+          <li><a href="#">Imprensa</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-heading">Produtos</div>
+        <ul class="footer-links">
+          <li><a href="#produtos">Proteína</a></li>
+          <li><a href="#produtos">Creatina</a></li>
+          <li><a href="#produtos">Pré-Treino</a></li>
+          <li><a href="#produtos">Vitaminas</a></li>
+          <li><a href="#produtos">Vegan</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-heading">Recursos</div>
+        <ul class="footer-links">
+          <li><a href="#nutricao">Guia Nutricional</a></li>
+          <li><a href="#proteina">Sobre Proteína</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Calculadora</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-heading">Suporte</div>
+        <ul class="footer-links">
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#">Encomendas</a></li>
+          <li><a href="#">Devoluções</a></li>
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <p style="font-size:0.8rem; margin:0;">© 2025 Alma Nutritiva. Todos os direitos reservados.</p>
+      <p style="font-size:0.8rem; margin:0; color:rgba(255,255,255,0.3);">Feito com ❤️ em Lisboa, Portugal</p>
+    </div>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h5><i class="bi bi-bag me-2"></i>O Teu Carrinho</h5>
+    <button class="cart-close" onclick="toggleCart()"><i class="bi bi-x-lg"></i></button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <i class="bi bi-bag-x"></i>
+      <p>O teu carrinho está vazio.</p>
+      <a href="#produtos" onclick="toggleCart()" style="color:var(--sage); font-size:0.875rem; text-decoration:none;">Ver Produtos →</a>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total">
+      <span>Total</span>
+      <strong id="cartTotal">€0.00</strong>
+    </div>
+    <button class="btn-checkout" data-bs-toggle="modal" data-bs-target="#soonModal">
+      Finalizar Compra <i class="bi bi-arrow-right ms-2"></i>
+    </button>
+  </div>
+</div>
+
+<!-- SOON MODAL -->
+<div class="modal fade modal-soon" id="soonModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4">
+      <div class="modal-body text-center">
+        <span class="modal-soon-icon">🚀</span>
+        <h5 class="modal-title mb-3">Em Breve!</h5>
+        <p class="text-muted mb-4" style="font-size:0.95rem; line-height:1.7;">
+          A nossa loja online está a ser preparada com todo o cuidado para te oferecer a melhor experiência de compra.<br><br>
+          <strong>Brevemente disponível!</strong><br>
+          Deixa o teu email para seres o primeiro a saber.
+        </p>
+        <div class="d-flex gap-2">
+          <input type="email" class="form-control" placeholder="email@exemplo.com" style="border-radius:50px;"/>
+          <button class="btn-primary-custom" onclick="notifyMe()" style="white-space:nowrap;">Avisar-me</button>
+        </div>
+        <button type="button" class="btn btn-link text-muted mt-3 d-block mx-auto" data-bs-dismiss="modal" style="font-size:0.85rem;">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" style="position:fixed;bottom:2rem;right:2rem;background:var(--forest);color:#fff;padding:1rem 1.5rem;border-radius:12px;font-size:0.875rem;z-index:99999;opacity:0;transform:translateY(10px);transition:all 0.3s;pointer-events:none;max-width:280px;"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // ─── CART ───
+  let cart = [];
+
+  function toggleCart() {
+    document.getElementById('cartSidebar').classList.toggle('active');
+    document.getElementById('cartOverlay').classList.toggle('active');
+  }
+
+  function addToCart(name, price, emoji) {
+    const existing = cart.find(i => i.name === name);
+    if (existing) { existing.qty++; }
+    else { cart.push({ name, price, emoji, qty: 1 }); }
+    renderCart();
+    showToast(`✅ ${name} adicionado!`);
+  }
+
+  function removeFromCart(name) {
+    cart = cart.filter(i => i.name !== name);
+    renderCart();
+  }
+
+  function changeQty(name, delta) {
+    const item = cart.find(i => i.name === name);
+    if (item) {
+      item.qty += delta;
+      if (item.qty <= 0) removeFromCart(name);
+      else renderCart();
+    }
+  }
+
+  function renderCart() {
+    const container = document.getElementById('cartItems');
+    const emptyEl = document.getElementById('cartEmpty');
+    const footer = document.getElementById('cartFooter');
+    const countEl = document.getElementById('cartCount');
+    const totalEl = document.getElementById('cartTotal');
+
+    const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+    const totalPrice = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+    countEl.textContent = totalItems;
+    totalEl.textContent = `€${totalPrice.toFixed(2)}`;
+
+    if (cart.length === 0) {
+      emptyEl.style.display = 'block';
+      footer.style.display = 'none';
+      container.innerHTML = '';
+      container.appendChild(emptyEl);
+      return;
+    }
+
+    emptyEl.style.display = 'none';
+    footer.style.display = 'block';
+
+    container.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div class="cart-item-img">${item.emoji}</div>
+        <div style="flex:1; min-width:0;">
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-price">€${item.price.toFixed(2)}</div>
+          <div class="cart-item-qty">
+            <button class="qty-btn" onclick="changeQty('${item.name}', -1)">−</button>
+            <span style="font-size:0.875rem; font-weight:600;">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty('${item.name}', 1)">+</button>
+          </div>
+        </div>
+        <button class="cart-remove" onclick="removeFromCart('${item.name}')"><i class="bi bi-trash"></i></button>
+      </div>
+    `).join('');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.opacity = '1';
+    t.style.transform = 'translateY(0)';
+    setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateY(10px)'; }, 3000);
+  }
+
+  function notifyMe() {
+    const modal = bootstrap.Modal.getInstance(document.getElementById('soonModal'));
+    modal.hide();
+    showToast('🎉 Irás ser o primeiro a saber!');
+  }
+
+  function showContactSuccess(e) {
+    e.preventDefault();
+    showToast('✉️ Mensagem enviada com sucesso!');
+  }
+
+  // ─── SCROLL ANIMATIONS ───
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // ─── ANIMATE MACRO BARS ───
+  const barObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.macro-fill').forEach(b => {
+          const w = b.style.width; b.style.width = '0';
+          setTimeout(() => { b.style.width = w; }, 100);
+        });
+        barObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  const barSection = document.getElementById('proteina');
+  if (barSection) barObserver.observe(barSection);
+</script>
+</body>
+</html>
