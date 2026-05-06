@@ -869,142 +869,108 @@
   <div class="container">
     <div class="row mb-5">
       <div class="col-lg-6 fade-up">
-        <span class="section-tag">🛒 Produtos</span>
-        <h2 class="section-title">Os nossos <strong>suplementos</strong></h2>
+        <span class="section-tag">🍽️ Refeições Saudáveis</span>
+        <h2 class="section-title">As nossas <strong>marmitas</strong></h2>
         <div class="divider-gold"></div>
-        <p class="text-muted">Formulados com os melhores ingredientes, testados e aprovados por atletas e nutricionistas.</p>
+        <p class="text-muted">Refeições preparadas com ingredientes frescos e selecionados, pensadas para o teu equilíbrio nutricional.</p>
       </div>
     </div>
-    <div class="row g-4">
-      <!-- Product 1 -->
-      <div class="col-md-6 col-lg-4 fade-up">
-        <div class="product-card">
-          <div class="product-img">
-            <span class="product-img-inner">🥛</span>
-            <span class="product-badge">Mais Vendido</span>
+    <div class="row g-4 justify-content-center">
+ 
+      <!-- Marmita 1: Lasanha de Courgete -->
+      <div class="col-md-6 fade-up">
+        <div class="product-card h-100">
+          <div class="product-img" style="background:linear-gradient(135deg,#e8f0e8,#f0ede0); height:220px;">
+            <span class="product-img-inner" style="font-size:5rem;">🥒</span>
+            <span class="product-badge">Chef's Pick</span>
           </div>
           <div class="product-body">
-            <div class="product-category">Proteína</div>
-            <div class="product-name">Whey Isolate Premium</div>
-            <div class="product-desc">27g de proteína por dose. Fórmula de rápida absorção com aminoácidos essenciais e BCAA 2:1:1.</div>
-            <div class="d-flex align-items-center justify-content-between">
-              <div>
-                <div class="product-price">€39.90 <small>/ 1kg</small></div>
+            <div class="product-category">Marmita Fit · Low-Carb</div>
+            <div class="product-name">Lasanha de Courgete</div>
+            <div class="product-desc">Camadas de courgete fresca laminada a substituir a massa tradicional, intercaladas com molho de tomate caseiro, ricotta e espinafres. Gratinada com queijo mozarela e finalizada com manjericão. Leve, nutritiva e sem glúten.</div>
+            <!-- Macros -->
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <div style="background:var(--light-sage); border-radius:10px; padding:0.5rem 0.8rem; text-align:center;">
+                <div style="font-family:'Cormorant Garamond'; font-size:1.2rem; font-weight:700; color:var(--forest); line-height:1;">290</div>
+                <div style="font-size:0.65rem; color:#888; text-transform:uppercase; letter-spacing:0.06em;">kcal</div>
               </div>
-              <button class="btn-add-cart" onclick="addToCart('Whey Isolate Premium', 39.90, '🥛')">
+              <div style="background:#fff3e0; border-radius:10px; padding:0.5rem 0.8rem; text-align:center;">
+                <div style="font-family:'Cormorant Garamond'; font-size:1.2rem; font-weight:700; color:var(--forest); line-height:1;">22g</div>
+                <div style="font-size:0.65rem; color:#888; text-transform:uppercase; letter-spacing:0.06em;">Proteína</div>
+              </div>
+              <div style="background:#e8f0f5; border-radius:10px; padding:0.5rem 0.8rem; text-align:center;">
+                <div style="font-family:'Cormorant Garamond'; font-size:1.2rem; font-weight:700; color:var(--forest); line-height:1;">14g</div>
+                <div style="font-size:0.65rem; color:#888; text-transform:uppercase; letter-spacing:0.06em;">Hidratos</div>
+              </div>
+              <div style="background:#fdf0f0; border-radius:10px; padding:0.5rem 0.8rem; text-align:center;">
+                <div style="font-family:'Cormorant Garamond'; font-size:1.2rem; font-weight:700; color:var(--forest); line-height:1;">11g</div>
+                <div style="font-size:0.65rem; color:#888; text-transform:uppercase; letter-spacing:0.06em;">Gordura</div>
+              </div>
+            </div>
+            <!-- Tags -->
+            <div class="d-flex flex-wrap gap-2 mb-4">
+              <span style="background:var(--light-sage); color:var(--sage); font-size:0.72rem; padding:3px 10px; border-radius:50px; font-weight:500;">🌿 Sem Glúten</span>
+              <span style="background:var(--light-sage); color:var(--sage); font-size:0.72rem; padding:3px 10px; border-radius:50px; font-weight:500;">🧀 Gratinada</span>
+              <span style="background:var(--light-sage); color:var(--sage); font-size:0.72rem; padding:3px 10px; border-radius:50px; font-weight:500;">🥬 Vegetariana</span>
+              <span style="background:var(--light-sage); color:var(--sage); font-size:0.72rem; padding:3px 10px; border-radius:50px; font-weight:500;">🫙 450g</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+              <div class="product-price">€7.90 <small>/ marmita</small></div>
+              <button class="btn-add-cart" onclick="addToCart('Lasanha de Courgete', 7.90, '🥒')">
                 <i class="bi bi-bag-plus"></i> Adicionar
               </button>
             </div>
           </div>
         </div>
       </div>
-      <!-- Product 2 -->
-      <div class="col-md-6 col-lg-4 fade-up">
-        <div class="product-card">
-          <div class="product-img" style="background:#e8eef5;">
-            <span class="product-img-inner">💪</span>
-            <span class="product-badge" style="background:var(--sage); color:#fff;">Novo</span>
+ 
+      <!-- Marmita 2: Massa à Bolonhesa -->
+      <div class="col-md-6 fade-up">
+        <div class="product-card h-100">
+          <div class="product-img" style="background:linear-gradient(135deg,#f5ede0,#f0e8e8); height:220px;">
+            <span class="product-img-inner" style="font-size:5rem;">🍝</span>
+            <span class="product-badge" style="background:var(--sage); color:#fff;">Mais Pedida</span>
           </div>
           <div class="product-body">
-            <div class="product-category">Creatina</div>
-            <div class="product-name">Creatine Monohydrate</div>
-            <div class="product-desc">Creatina monoidratada micronizada. Aumenta força, potência e volume muscular. 300g / 60 doses.</div>
-            <div class="d-flex align-items-center justify-content-between">
-              <div>
-                <div class="product-price">€18.90 <small>/ 300g</small></div>
+            <div class="product-category">Marmita Fit · Alta Proteína</div>
+            <div class="product-name">Massa à Bolonhesa</div>
+            <div class="product-desc">Esparguete integral cozido al dente com um molho bolonhesa caseiro de carne de vaca magra, cozinhado lentamente com tomate, cenoura, aipo, alho e ervas frescas. Rico em proteína, alto em sabor. Comfort food saudável.</div>
+            <!-- Macros -->
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <div style="background:var(--light-sage); border-radius:10px; padding:0.5rem 0.8rem; text-align:center;">
+                <div style="font-family:'Cormorant Garamond'; font-size:1.2rem; font-weight:700; color:var(--forest); line-height:1;">460</div>
+                <div style="font-size:0.65rem; color:#888; text-transform:uppercase; letter-spacing:0.06em;">kcal</div>
               </div>
-              <button class="btn-add-cart" onclick="addToCart('Creatine Monohydrate', 18.90, '💪')">
+              <div style="background:#fff3e0; border-radius:10px; padding:0.5rem 0.8rem; text-align:center;">
+                <div style="font-family:'Cormorant Garamond'; font-size:1.2rem; font-weight:700; color:var(--forest); line-height:1;">38g</div>
+                <div style="font-size:0.65rem; color:#888; text-transform:uppercase; letter-spacing:0.06em;">Proteína</div>
+              </div>
+              <div style="background:#e8f0f5; border-radius:10px; padding:0.5rem 0.8rem; text-align:center;">
+                <div style="font-family:'Cormorant Garamond'; font-size:1.2rem; font-weight:700; color:var(--forest); line-height:1;">48g</div>
+                <div style="font-size:0.65rem; color:#888; text-transform:uppercase; letter-spacing:0.06em;">Hidratos</div>
+              </div>
+              <div style="background:#fdf0f0; border-radius:10px; padding:0.5rem 0.8rem; text-align:center;">
+                <div style="font-family:'Cormorant Garamond'; font-size:1.2rem; font-weight:700; color:var(--forest); line-height:1;">9g</div>
+                <div style="font-size:0.65rem; color:#888; text-transform:uppercase; letter-spacing:0.06em;">Gordura</div>
+              </div>
+            </div>
+            <!-- Tags -->
+            <div class="d-flex flex-wrap gap-2 mb-4">
+              <span style="background:var(--light-sage); color:var(--sage); font-size:0.72rem; padding:3px 10px; border-radius:50px; font-weight:500;">🥩 Carne Magra</span>
+              <span style="background:var(--light-sage); color:var(--sage); font-size:0.72rem; padding:3px 10px; border-radius:50px; font-weight:500;">🌾 Integral</span>
+              <span style="background:var(--light-sage); color:var(--sage); font-size:0.72rem; padding:3px 10px; border-radius:50px; font-weight:500;">🍅 Molho Caseiro</span>
+              <span style="background:var(--light-sage); color:var(--sage); font-size:0.72rem; padding:3px 10px; border-radius:50px; font-weight:500;">🫙 500g</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+              <div class="product-price">€8.90 <small>/ marmita</small></div>
+              <button class="btn-add-cart" onclick="addToCart('Massa à Bolonhesa', 8.90, '🍝')">
                 <i class="bi bi-bag-plus"></i> Adicionar
               </button>
             </div>
           </div>
         </div>
       </div>
-      <!-- Product 3 -->
-      <div class="col-md-6 col-lg-4 fade-up">
-        <div class="product-card">
-          <div class="product-img" style="background:#f5ede8;">
-            <span class="product-img-inner">⚡</span>
-          </div>
-          <div class="product-body">
-            <div class="product-category">Pré-Treino</div>
-            <div class="product-name">Pre-Workout Ignite</div>
-            <div class="product-desc">Energia explosiva com cafeína, beta-alanina, L-citrulina e niacina. Foco e pump sem crash.</div>
-            <div class="d-flex align-items-center justify-content-between">
-              <div>
-                <div class="product-price">€29.90 <small>/ 300g</small></div>
-              </div>
-              <button class="btn-add-cart" onclick="addToCart('Pre-Workout Ignite', 29.90, '⚡')">
-                <i class="bi bi-bag-plus"></i> Adicionar
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Product 4 -->
-      <div class="col-md-6 col-lg-4 fade-up">
-        <div class="product-card">
-          <div class="product-img" style="background:#f0ebe8;">
-            <span class="product-img-inner">🌿</span>
-          </div>
-          <div class="product-body">
-            <div class="product-category">Vegan</div>
-            <div class="product-name">Plant Protein Blend</div>
-            <div class="product-desc">Blend de proteína vegetal de ervilha, arroz e cânhamo. 24g de proteína. 100% plant-based.</div>
-            <div class="d-flex align-items-center justify-content-between">
-              <div>
-                <div class="product-price">€34.90 <small>/ 800g</small></div>
-              </div>
-              <button class="btn-add-cart" onclick="addToCart('Plant Protein Blend', 34.90, '🌿')">
-                <i class="bi bi-bag-plus"></i> Adicionar
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Product 5 -->
-      <div class="col-md-6 col-lg-4 fade-up">
-        <div class="product-card">
-          <div class="product-img" style="background:#e8f0f5;">
-            <span class="product-img-inner">🫐</span>
-            <span class="product-badge" style="background: #4a7aba; color:#fff;">Promoção</span>
-          </div>
-          <div class="product-body">
-            <div class="product-category">Vitaminas</div>
-            <div class="product-name">Multivitamínico Sport</div>
-            <div class="product-desc">25 vitaminas e minerais essenciais, adaptados para atletas. Imunidade, energia e recuperação.</div>
-            <div class="d-flex align-items-center justify-content-between">
-              <div>
-                <div class="product-price">€22.90 <small>/ 60 caps</small></div>
-              </div>
-              <button class="btn-add-cart" onclick="addToCart('Multivitamínico Sport', 22.90, '🫐')">
-                <i class="bi bi-bag-plus"></i> Adicionar
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Product 6 -->
-      <div class="col-md-6 col-lg-4 fade-up">
-        <div class="product-card">
-          <div class="product-img" style="background:#eef0e8;">
-            <span class="product-img-inner">😴</span>
-          </div>
-          <div class="product-body">
-            <div class="product-category">Recuperação</div>
-            <div class="product-name">Sleep & Recovery</div>
-            <div class="product-desc">Magnésio, L-teanina, ashwagandha e melatonina para recuperação noturna profunda e sono de qualidade.</div>
-            <div class="d-flex align-items-center justify-content-between">
-              <div>
-                <div class="product-price">€26.90 <small>/ 60 caps</small></div>
-              </div>
-              <button class="btn-add-cart" onclick="addToCart('Sleep & Recovery', 26.90, '😴')">
-                <i class="bi bi-bag-plus"></i> Adicionar
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+ 
     </div>
   </div>
 </section>
